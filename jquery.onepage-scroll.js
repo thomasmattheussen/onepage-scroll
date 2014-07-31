@@ -125,7 +125,6 @@
       }else {
         pos = (index * 100) * -1;
       }
-      if (typeof settings.beforeMove == 'function') settings.beforeMove( next.data("index"));
       current.removeClass("active")
       next.addClass("active");
       if(settings.pagination == true) {
@@ -160,7 +159,6 @@
       }else {
         pos = ((next.data("index") - 1) * 100) * -1;
       }
-      if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
       current.removeClass("active")
       next.addClass("active")
       if(settings.pagination == true) {
@@ -181,7 +179,6 @@
       current = $(settings.sectionContainer + ".active")
       next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
       if(next.length > 0) {
-        if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
         current.removeClass("active")
         next.addClass("active")
         $(".onepage-pagination li a" + ".active").removeClass("active");
@@ -203,7 +200,7 @@
       //start modification
       var valForTest = false;
       var typeOfRF = typeof settings.responsiveFallback
-      
+
       if(typeOfRF == "number"){
       	valForTest = $(window).width() < settings.responsiveFallback;
       }
@@ -218,8 +215,8 @@
       		valForTest = $(window).width() < valFunction;
       	}
       }
-      
-      //end modification 
+
+      //end modification
       if (valForTest) {
         $("body").addClass("disabled-onepage-scroll");
         $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
@@ -273,8 +270,8 @@
         position: "absolute",
         top: topPos + "%"
       }).addClass("section").attr("data-index", i+1);
-      
-      
+
+
       $(this).css({
         position: "absolute",
         left: ( settings.direction == 'horizontal' )
@@ -284,13 +281,13 @@
           ? topPos + "%"
           : 0
       });
-      
+
       if (settings.direction == 'horizontal')
         leftPos = leftPos + 100;
       else
         topPos = topPos + 100;
-      
-      
+
+
       if(settings.pagination == true) {
         paginationList += "<li><a data-index='"+(i+1)+"' href='#" + (i+1) + "'></a></li>"
       }
@@ -307,7 +304,7 @@
     // Create Pagination and Display Them
     if (settings.pagination == true) {
       if ($('ul.onepage-pagination').length < 1) $("<ul class='onepage-pagination'></ul>").prependTo("body");
-      
+
       if( settings.direction == 'horizontal' ) {
         posLeft = (el.find(".onepage-pagination").width() / 2) * -1;
         el.find(".onepage-pagination").css("margin-left", posLeft);
@@ -320,7 +317,7 @@
 
     if(window.location.hash != "" && window.location.hash != "#1") {
       init_index =  window.location.hash.replace("#", "")
-      
+
       if (parseInt(init_index) <= total && parseInt(init_index) > 0) {
         $(settings.sectionContainer + "[data-index='" + init_index + "']").addClass("active")
         $("body").addClass("viewing-page-"+ init_index)
@@ -349,7 +346,7 @@
       $("body").addClass("viewing-page-1")
       if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
     }
-    
+
     if(settings.pagination == true)  {
       $(".onepage-pagination li a").click(function (){
         var page_index = $(this).data("index");
